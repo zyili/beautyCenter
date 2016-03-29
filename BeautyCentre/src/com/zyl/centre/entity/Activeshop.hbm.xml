@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015-12-13 14:43:41 by Hibernate Tools 3.2.2.GA -->
+<hibernate-mapping>
+    <class name="com.zyl.centre.entity.Activeshop" table="activeshop" catalog="beautycentre">
+        <composite-id name="id" class="com.zyl.centre.entity.ActiveshopId">
+            <key-property name="imgactiveid" type="int">
+                <column name="imgactiveid" />
+            </key-property>
+            <key-property name="shopid" type="int">
+                <column name="shopid" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="shop" class="com.zyl.centre.entity.Shop" update="false" insert="false" fetch="select">
+            <column name="shopid" not-null="true" />
+        </many-to-one>
+        <many-to-one name="imgactive" class="com.zyl.centre.entity.Imgactive" update="false" insert="false" fetch="select">
+            <column name="imgactiveid" not-null="true" />
+        </many-to-one>
+        <property name="shopname" type="string">
+            <column name="shopname" length="100" />
+        </property>
+        <property name="avtivename" type="string">
+            <column name="avtivename" length="50" />
+        </property>
+    </class>
+</hibernate-mapping>

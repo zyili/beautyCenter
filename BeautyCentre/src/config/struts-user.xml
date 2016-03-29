@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<!-- 设置该应用使用的解码集 -->
+	<constant name="struts.i18n.encoding" value="GBK" />
+	<constant name="struts.multipart.maxSize" value="1000000000" />
+
+	<constant name="struts.multipart.saveDir" value="/tmp"></constant>
+	<!-- 与spring集成的写法，action等交予spring管理 -->
+	<package name="struts-user" extends="struts">
+		<action name="login" class="loginAction" method="login" />
+		<action name="weblogin" class="loginAction" method="weblogin" />
+		<action name="unlogin" class="loginAction" method="unlogin">
+			<result name="success" type="redirect">/success.jsp</result>
+		</action>
+		<action name="businessRegiste" class="BusinessRegiste" method="businessRegiste" />
+		<action name="getOrdersInfo" class="orderAction" method="getOrdersInfo" />
+		<action name="editOrder" class="orderAction" method="editOrder" />
+		<action name="getOrdersInfoByUserid" class="userAction"
+			method="getOrdersInfoByUserid" />
+		<action name="userRegiste" class="userAction" method="userRegiste" />
+		<action name="getimgadverInfoById" class="userAction" method="getimgadverInfoById" />
+		<action name="getimgadverByCity" class="userAction" method="getimgadverByCity" />
+		<action name="userUpdate" class="userAction" method="userUpdate" />
+		<action name="getUserInfoById" class="userAction" method="getUserInfoById" />
+		<action name="cancelOrd" class="userAction" method="cancelOrd" />
+		<action name="bookService" class="userAction" method="bookService" />
+		<action name="bookShop" class="userAction" method="bookShop" />
+		<action name="getBookCount" class="userAction" method="getBookCount" />
+		<action name="getBookShopsInfo" class="userAction" method="getBookShopsInfo" />
+		<action name="getBookServsInfo" class="userAction" method="getBookServsInfo" />
+		<action name="createReview" class="userAction" method="createReview" />
+		<action name="updateReview" class="userAction" method="updateReview" />
+		<action name="findReviewsByShopId" class="userAction" method="findReviewsByShopId" />
+		<action name="deleteReview" class="userAction" method="deleteReview" />
+		<action name="createComplaint" class="userAction" method="createComplaint" />
+		<action name="updateComplaint" class="userAction" method="updateComplaint" />
+		<action name="deleteComplaint" class="userAction" method="deleteComplaint" />
+		<action name="getShopInfo" class="shopAction" method="getShopInfo" />
+		<action name="webfindShopinfo" class="shopAction" method="webfindShopinfo" />
+		<action name="getAreasByCity" class="shopAction" method="getAreasByCity" />
+		<action name="getShopInfoByServiceid" class="shopAction"
+			method="getShopInfoByServiceid" />
+		<action name="getHotShopsInfo" class="shopAction" method="getHotShopsInfo" />
+		<action name="updateShopInfo" class="shopAction" method="updateShopInfo" />
+		<action name="getShopOrdInfo" class="shopAction" method="getShopOrdInfo" />
+		<action name="getCityInfo" class="shopAction" method="getCityInfo" />
+		<action name="getShopInfoById" class="shopAction" method="getShopInfoById" />
+		<action name="getActivesInfo" class="shopAction" method="getActivesInfo" />
+		<action name="getActiveInfoByID" class="shopAction" method="getActiveInfoByID" />
+		<action name="getShopsInfoByAreaType" class="shopAction"
+			method="getShopsInfoByAreaType" />
+		<action name="getShopsInfoByDistance" class="shopAction"
+			method="getShopsInfoByDistance" />
+		<action name="getServsInfoByAreaType" class="serviceAction"
+			method="getServsInfoByAreaType" />
+		<action name="getServsInfo" class="serviceAction" method="getServsInfo" />
+		<action name="getTypesByProdId" class="serviceAction" method="getTypesByProdId" />
+		<action name="deleteService" class="serviceAction" method="deleteService" />
+		<action name="getServtype" class="serviceAction" method="getServtype" />
+		<action name="produceService" class="serviceAction" method="produceService" />
+		<action name="test" class="shopAction" method="test" />
+
+		<!-- stage_web action -->
+		<action name="stagelogin" class="stageLogin">
+			<result name="success" type="redirect">stage_management/index-Ma.jsp
+			</result>
+			<result name="error" type="redirect">stage_management/login.jsp</result>
+		</action>
+		<action name="stageunlogin" class="stageLogin" method="stageunlogin">
+			<result name="login" type="redirect">stage_management/login.jsp</result>
+		</action>
+		<action name="listUser" class="stageLogin" method="listUser">
+			<result name="success" type="redirect">stage_management/manage/User/userMessage.jsp
+			</result>
+			<result name="error">stage_management/fail.jsp</result>
+		</action>
+		<action name="saveImgadve" class="stageLogin" method="saveImgadve">
+			<result name="success" type="chain">getImgadvsInfo</result>
+			<result name="error">stage_management/fail.jsp</result>
+		</action>
+		<action name="deleteImgadv" class="stageLogin" method="deleteImgadv">
+			<result name="success" type="chain">getImgadvsInfo</result>
+			<result name="error">stage_management/fail.jsp</result>
+		</action>
+		<action name="getImgadvsInfo" class="stageLogin" method="getImgadvsInfo">
+			<result name="success" type="redirect">stage_management/manage/User/showImgadvs.jsp
+			</result>
+		</action>
+		<action name="showActive" class="stageLogin" method="showActive">
+			<result name="success" type="redirect">stage_management/manage/User/activesInfo.jsp
+			</result>
+		</action>
+		<action name="saveImgactive" class="stageLogin" method="saveImgactive">
+			<result name="success" type="chain">showActive</result>
+			<result name="error">stage_management/manage/User/activesInfo.jsp
+			</result>
+		</action>
+		<action name="deleteActive" class="stageLogin" method="deleteActive">
+			<result name="success" type="chain">showActive</result>
+			<result name="error">stage_management/manage/User/activesInfo.jsp
+			</result>
+		</action>
+		<action name="findUserMessage" class="statgeUser" method="findUserMessage">
+			<result name="success" type="redirect">stage_management/manage/User/checkUserMessage.jsp
+			</result>
+			<result name="error">stage_management/fail.jsp</result>
+		</action>
+		<action name="findOrdInfo" class="statgeUser" method="findOrdInfo">
+			<result name="success" type="redirect">stage_management/manage/User/checkOrderInfo.jsp
+			</result>
+			<result name="error">stage_management/fail.jsp</result>
+		</action>
+		<action name="modifyUserPass" class="statgeUser" method="modifyUserPass">
+			<result name="success" type="redirect">stage_management/manage/User/userMessage.jsp
+			</result>
+			<result name="error">stage_management/fail.jsp</result>
+		</action>
+		<action name="listOrdInfo" class="statgeUser" method="listOrdInfo">
+			<result name="success" type="redirect">stage_management/manage/User/ordInfo.jsp
+			</result>
+			<result name="error">stage_management/fail.jsp</result>
+		</action>
+		<action name="listShopInfo" class="statgeUser" method="listShopInfo">
+			<result name="success" type="redirect">stage_management/manage/Shop/shopInfo.jsp
+			</result>
+			<result name="error">stage_management/fail.jsp</result>
+		</action>
+		<action name="queryOderInfo" class="statgeUser" method="queryOderInfo">
+			<result name="success" type="redirect">stage_management/manage/User/ordInfo.jsp
+			</result>
+			<result name="error">stage_management/fail.jsp</result>
+		</action>
+		<action name="queryUser" class="statgeUser" method="queryUser">
+			<result name="success" type="redirect">stage_management/manage/User/userMessage.jsp
+			</result>
+			<result name="error">stage_management/fail.jsp</result>
+		</action>
+		<action name="listReviews" class="statgeUser" method="listReviews">
+			<result name="success" type="redirect">stage_management/manage/User/reviewsInfo.jsp
+			</result>
+			<result name="error">stage_management/fail.jsp</result>
+		</action>
+		<action name="deleteReviewByAdmin" class="statgeUser" method="deleteReviewByAdmin">
+			<result name="success" type="redirect">stage_management/manage/User/reviewsInfo.jsp
+			</result>
+		</action>
+
+		<action name="findDealComp" class="statgeUser" method="findDealComp">
+			<result name="success" type="redirect">stage_management/manage/User/dealCompInfo.jsp
+			</result>
+			<result name="error">stage_management/fail.jsp</result>
+		</action>
+
+		<action name="findnoDealComp" class="statgeUser" method="findnoDealComp">
+			<result name="success" type="redirect">stage_management/manage/User/ndealCompInfo.jsp
+			</result>
+			<result name="error">stage_management/fail.jsp</result>
+		</action>
+		<action name="dealComp" class="statgeUser" method="dealComp">
+			<result name="success" type="chain">findDealComp</result>
+		</action>
+		<action name="getcompinfo" class="statgeUser" method="getcompinfo">
+			<result name="success" type="redirect">stage_management/manage/User/compInfo.jsp
+			</result>
+			<result name="error">stage_management/fail.jsp</result>
+		</action>
+		<action name="findNoCheckShop" class="stageShop" method="findNoCheckShop">
+			<result name="success" type="redirect">stage_management/manage/Shop/checkshop.jsp
+			</result>
+			<result name="error">stage_management/fail.jsp</result>
+		</action>
+		<action name="findCheckedShop" class="stageShop" method="findCheckedShop">
+			<result name="success" type="redirect">stage_management/manage/Shop/shopcheck.jsp
+			</result>
+			<result name="error">stage_management/fail.jsp</result>
+		</action>
+		<action name="findProdType" class="stageShop" method="findProdType">
+			<result name="success" type="redirect">stage_management/manage/Shop/ServLabel.jsp
+			</result>
+			<result name="error">stage_management/fail.jsp</result>
+		</action>
+		<action name="findShopInfo" class="stageShop" method="findShopInfo">
+			<result name="success" type="redirect">stage_management/manage/Shop/shopMessage.jsp
+			</result>
+			<result name="error">stage_management/fail.jsp</result>
+		</action>
+		<action name="checkShopInfo" class="stageShop" method="checkShopInfo">
+			<result name="success" type="redirect">stage_management/manage/Shop/checkShopInfo.jsp
+			</result>
+			<result name="error">stage_management/fail.jsp</result>
+		</action>
+		<action name="saveWebShopInfo" class="stageShop" method="saveWebShopInfo">
+			<result name="success" type="chain">listShopInfo</result>
+		</action>
+		<action name="serviceInfo" class="stageShop" method="serviceInfo">
+			<result name="success" type="redirect">stage_management/manage/Shop/serviceInfo.jsp
+			</result>
+		</action>
+		<action name="recoveryService" class="stageShop" method="recoveryService">
+			<result name="success" type="redirect">stage_management/manage/Shop/serviceInfo.jsp
+			</result>
+		</action>
+		<action name="closeService" class="stageShop" method="closeService">
+			<result name="success" type="redirect">stage_management/manage/Shop/serviceInfo.jsp
+			</result>
+		</action>
+
+		<action name="findServInfo" class="stageShop" method="findServInfo">
+			<result name="success" type="redirect">stage_management/manage/Shop/serviceMessage.jsp
+			</result>
+		</action>
+		<action name="closeShop" class="stageShop" method="closeShop">
+			<result name="success" type="redirect">stage_management/manage/Shop/shopInfo.jsp
+			</result>
+		</action>
+		<action name="recoveryShop" class="stageShop" method="recoveryShop">
+			<result name="success" type="redirect">stage_management/manage/Shop/shopInfo.jsp
+			</result>
+		</action>
+		<action name="queryShop" class="stageShop" method="queryShop">
+			<result name="success" type="redirect">stage_management/manage/Shop/shopInfo.jsp
+			</result>
+			<result name="error">stage_management/fail.jsp</result>
+		</action>
+		<action name="checkShop" class="stageShop" method="checkShop">
+			<result name="success" type="redirect">stage_management/manage/Shop/checkshop.jsp
+			</result>
+			<result name="error">stage_management/fail.jsp</result>
+		</action>
+		<action name="deleteProdType" class="stageShop" method="deleteProdType">
+			<result name="success" type="redirect">stage_management/manage/Shop/ServLabel.jsp
+			</result>
+			<result name="error">stage_management/fail.jsp</result>
+		</action>
+		<action name="addProdType" class="stageShop" method="addProdType">
+			<result name="success" type="chain">findProdType</result>
+			<result name="error">addProdType.jsp</result>
+		</action>
+
+		<action name="editHotShops" class="stageShop" method="editHotShops">
+			<result name="success" type="redirect">stage_management/manage/Shop/hotShop.jsp
+			</result>
+			<result name="error">stage_management/fail.jsp</result>
+		</action>
+
+		<action name="deleteHotShop" class="stageShop" method="deleteHotShop">
+			<result name="success" type="redirect">stage_management/manage/Shop/hotShop.jsp
+			</result>
+			<result name="error">stage_management/fail.jsp</result>
+		</action>
+
+		<action name="changehotShop" class="stageShop" method="changehotShop">
+			<result name="success" type="redirect">stage_management/manage/Shop/changeHotShop.jsp
+			</result>
+			<result name="error">stage_management/fail.jsp</result>
+		</action>
+
+		<action name="addHotShop" class="stageShop" method="addHotShop">
+			<result name="success" type="redirect">stage_management/manage/Shop/hotShop.jsp
+			</result>
+			<result name="error">addHotShop.jsp</result>
+		</action>
+		<action name="modifyHotShop" class="stageShop" method="modifyHotShop">
+			<result name="success" type="redirect">stage_management/manage/Shop/hotShop.jsp
+			</result>
+			<result name="error">changeHotShop.jsp</result>
+		</action>
+	</package>
+</struts>

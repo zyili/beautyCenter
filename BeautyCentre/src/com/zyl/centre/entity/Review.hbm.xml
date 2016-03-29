@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015-12-19 18:01:23 by Hibernate Tools 3.2.2.GA -->
+<hibernate-mapping>
+    <class name="com.zyl.centre.entity.Review" table="review" catalog="beautycentre">
+        <id name="reviewid" type="java.lang.Integer">
+            <column name="reviewid" />
+            <generator class="identity" />
+        </id>
+        <property name="orderid" type="java.lang.Integer">
+            <column name="orderid" />
+        </property>
+        <property name="userid" type="java.lang.Integer">
+            <column name="userid" />
+        </property>
+        <property name="username" type="string">
+            <column name="username" length="30" />
+        </property>
+        <property name="ishopord" type="java.lang.Integer">
+            <column name="ishopord" />
+        </property>
+        <property name="createdatetime" type="timestamp">
+            <column name="createdatetime" length="0" />
+        </property>
+        <property name="score" type="java.lang.Integer">
+            <column name="score" />
+        </property>
+        <property name="content" type="string">
+            <column name="content" length="65535" />
+        </property>
+        <property name="modifydatetime" type="timestamp">
+            <column name="modifydatetime" length="0" />
+        </property>
+        <property name="shopid" type="java.lang.Integer">
+            <column name="shopid" />
+        </property>
+        <property name="serviceid" type="java.lang.Integer">
+            <column name="serviceid" />
+        </property>
+        <property name="ext1" type="string">
+            <column name="ext1" length="30" />
+        </property>
+        <property name="ext2" type="string">
+            <column name="ext2" length="40" />
+        </property>
+    </class>
+</hibernate-mapping>

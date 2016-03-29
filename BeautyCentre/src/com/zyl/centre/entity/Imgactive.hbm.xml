@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015-12-13 14:43:41 by Hibernate Tools 3.2.2.GA -->
+<hibernate-mapping>
+    <class name="com.zyl.centre.entity.Imgactive" table="imgactive" catalog="beautycentre">
+        <id name="imgactiveid" type="java.lang.Integer">
+            <column name="imgactiveid" />
+            <generator class="identity" />
+        </id>
+        <property name="activename" type="string">
+            <column name="activename" length="50" />
+        </property>
+        <property name="activeurl" type="string">
+            <column name="activeurl" length="100" />
+        </property>
+        <property name="activeexpiredate" type="date">
+            <column name="activeexpiredate" length="0" />
+        </property>
+        <property name="activecreatedate" type="date">
+            <column name="activecreatedate" length="0" />
+        </property>
+        <property name="createusername" type="string">
+            <column name="createusername" length="50" />
+        </property>
+        <property name="activedec" type="string">
+            <column name="activedec" length="65535" />
+        </property>
+        <property name="activeimgname" type="string">
+            <column name="activeimgname" length="50" />
+        </property>
+        <property name="activeimgurl" type="string">
+            <column name="activeimgurl" length="100" />
+        </property>
+        <property name="ext1" type="string">
+            <column name="ext1" length="30" />
+        </property>
+        <property name="ext2" type="string">
+            <column name="ext2" length="40" />
+        </property>
+        <set name="activeshops" inverse="true">
+            <key>
+                <column name="imgactiveid" not-null="true" />
+            </key>
+            <one-to-many class="com.zyl.centre.entity.Activeshop" />
+        </set>
+    </class>
+</hibernate-mapping>

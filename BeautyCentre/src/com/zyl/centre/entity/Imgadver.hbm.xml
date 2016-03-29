@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015-12-9 12:45:26 by Hibernate Tools 3.2.2.GA -->
+<hibernate-mapping>
+	<class name="com.zyl.centre.entity.Imgadver" table="imgadver"
+		catalog="beautycentre">
+		<id name="imgadverid" type="java.lang.Integer">
+			<column name="imgadverid" />
+			<generator class="identity" />
+		</id>
+		<property name="advername" type="string">
+			<column name="advername" length="80" />
+		</property>
+		<property name="tourl" type="string">
+			<column name="tourl" length="150" />
+		</property>
+		<property name="imgadvername" type="string">
+			<column name="imgadvername" length="80" />
+		</property>
+		<property name="imgadverurl" type="string">
+			<column name="imgadverurl" length="100" />
+		</property>
+		<property name="expiredate" type="date">
+			<column name="expiredate" length="0" />
+		</property>
+		<property name="refcityname" type="string">
+			<column name="refcityname" length="50" />
+		</property>
+		<property name="refcityid" type="java.lang.Integer">
+			<column name="refcityid" />
+		</property>
+		<property name="createdate" type="date">
+			<column name="createdate" length="0" />
+		</property>
+		<property name="modifydate" type="date">
+			<column name="modifydate" length="0" />
+		</property>
+		<property name="createop" type="string">
+			<column name="createop" length="30" />
+		</property>
+		<property name="modifyop" type="string">
+			<column name="modifyop" length="30" />
+		</property>
+		<property name="adverdec" type="string">
+			<column name="adverdec" length="65535" />
+		</property>
+		<property name="ext1" type="string">
+			<column name="ext1" length="30" />
+		</property>
+		<property name="ext2" type="string">
+			<column name="ext2" length="40" />
+		</property>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,101 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015-12-19 18:01:23 by Hibernate Tools 3.2.2.GA -->
+<hibernate-mapping>
+	<class name="com.zyl.centre.entity.Shop" table="shop" catalog="beautycentre">
+		<id name="shopid" type="java.lang.Integer">
+			<column name="shopid" />
+			<generator class="identity" />
+		</id>
+		<many-to-one name="area" class="com.zyl.centre.entity.Area"
+			fetch="select">
+			<column name="areaid" not-null="true" />
+		</many-to-one>
+		<many-to-one name="user" class="com.zyl.centre.entity.User"
+			fetch="select">
+			<column name="createuserid" not-null="true" />
+		</many-to-one>
+		<property name="shopname" type="string">
+			<column name="shopname" length="100" not-null="true" />
+		</property>
+		<property name="shoptypeid" type="java.lang.Integer">
+			<column name="shoptypeid" />
+		</property>
+		<property name="state" type="java.lang.Integer">
+			<column name="state" />
+		</property>
+		<property name="createtime" type="timestamp">
+			<column name="createtime" length="0" />
+		</property>
+		<property name="shopdec" type="string">
+			<column name="shopdec" length="65535" />
+		</property>
+		<property name="shopphone" type="string">
+			<column name="shopphone" length="25" />
+		</property>
+		<property name="shopaddress" type="string">
+			<column name="shopaddress" length="100" />
+		</property>
+		<property name="perconsum" type="java.lang.Integer">
+			<column name="perconsum" />
+		</property>
+		<property name="businesstime" type="string">
+			<column name="businesstime" length="50" />
+		</property>
+		<property name="shoplevel" type="java.lang.Integer">
+			<column name="shoplevel" />
+		</property>
+		<property name="discountmessage" type="string">
+			<column name="discountmessage" length="100" />
+		</property>
+		<property name="ext1" type="string">
+			<column name="ext1" length="10" />
+		</property>
+		<property name="ext2" type="string">
+			<column name="ext2" length="20" />
+		</property>
+		<property name="ext3" type="string">
+			<column name="ext3" length="30" />
+		</property>
+		<property name="checkusername" type="string">
+			<column name="checkusername" length="30" />
+		</property>
+		<property name="ownusername" type="string">
+			<column name="ownusername" length="30" />
+		</property>
+		<property name="modifytime" type="timestamp">
+			<column name="modifytime" length="0" />
+		</property>
+		<property name="ishotshop" type="java.lang.Integer">
+			<column name="ishotshop" />
+		</property>
+		<property name="lng" type="java.lang.Double">
+			<column name="lng" precision="22" scale="0" />
+		</property>
+		<property name="lat" type="java.lang.Double">
+			<column name="lat" precision="22" scale="0" />
+		</property>
+		<property name="score" type="java.lang.Double">
+			<column name="score" precision="22" scale="0" />
+		</property>
+		<set name="imgsrcs" inverse="true">
+			<key>
+				<column name="shopid" />
+			</key>
+			<one-to-many class="com.zyl.centre.entity.Imgsrc" />
+		</set>
+		<set name="services" inverse="true">
+			<key>
+				<column name="shopid" not-null="true" />
+			</key>
+			<one-to-many class="com.zyl.centre.entity.Service" />
+		</set>
+		<set name="activeshops" inverse="true">
+			<key>
+				<column name="shopid" not-null="true" />
+			</key>
+			<one-to-many class="com.zyl.centre.entity.Activeshop" />
+		</set>
+	</class>
+</hibernate-mapping>

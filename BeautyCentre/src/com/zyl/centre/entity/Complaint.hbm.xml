@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015-12-25 13:47:12 by Hibernate Tools 3.2.2.GA -->
+<hibernate-mapping>
+    <class name="com.zyl.centre.entity.Complaint" table="complaint" catalog="beautycentre">
+        <id name="complaintid" type="java.lang.Integer">
+            <column name="complaintid" />
+            <generator class="identity" />
+        </id>
+        <property name="createdatetime" type="timestamp">
+            <column name="createdatetime" length="0" />
+        </property>
+        <property name="modifydatetime" type="timestamp">
+            <column name="modifydatetime" length="0" />
+        </property>
+        <property name="submituserid" type="java.lang.Integer">
+            <column name="submituserid" />
+        </property>
+        <property name="submitusername" type="string">
+            <column name="submitusername" length="50" />
+        </property>
+        <property name="complaintcontent" type="string">
+            <column name="complaintcontent" length="65535" />
+        </property>
+        <property name="userphone" type="string">
+            <column name="userphone" length="20" />
+        </property>
+        <property name="shopid" type="java.lang.Integer">
+            <column name="shopid" />
+        </property>
+        <property name="shopname" type="string">
+            <column name="shopname" length="50" />
+        </property>
+        <property name="serviceid" type="java.lang.Integer">
+            <column name="serviceid" />
+        </property>
+        <property name="servicename" type="string">
+            <column name="servicename" length="50" />
+        </property>
+        <property name="state" type="java.lang.Integer">
+            <column name="state" />
+        </property>
+        <property name="feedback" type="string">
+            <column name="feedback" length="65535" />
+        </property>
+        <property name="dealuserid" type="java.lang.Integer">
+            <column name="dealuserid" />
+        </property>
+        <property name="dealusername" type="string">
+            <column name="dealusername" length="50" />
+        </property>
+        <property name="dealdatetime" type="timestamp">
+            <column name="dealdatetime" length="0" />
+        </property>
+    </class>
+</hibernate-mapping>
